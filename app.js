@@ -12,11 +12,11 @@ const auth = require('./routes/auth')
 
 
 app.use(express.json())
+app.use(cors({origin:'*'}))
 app.use('/',user) 
 app.use('/',product) 
 app.use('/',order) 
 app.use('/',auth) 
-app.use(cors({origin:'*'}))
 
 
 app.listen(PORT,()=>{
