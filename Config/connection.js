@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.set('strictQuery',true)
-// const URL= `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.v0f64ar.mongodb.net/E-commerce?retryWrites=true&w=majority`
-const URL ='mongodb://127.0.0.1:27017/E-Commerce' 
+const URL= `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.v0f64ar.mongodb.net/E-commerce?retryWrites=true&w=majority`
+// const URL ='mongodb://127.0.0.1:27017/E-Commerce' 
 
 const Connection = async () => {
     try{
