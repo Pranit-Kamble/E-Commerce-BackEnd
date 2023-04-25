@@ -16,8 +16,8 @@ const AddOrders = async(req,res) =>{
                     const Checkname = await OrderModel.findOne({name:details.name})
                     // console.log(Checkname)
                     if(Checkname === null){
-                        res.send('Added to cart')
                         const result = await OrderModel.create({name:details.name,orders:[{...order,qty:1}]})
+                        res.send(result)
                         // console.log(result)
                         result.save()
                     }
