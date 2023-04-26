@@ -76,23 +76,23 @@ const getOrders = async(req,res) =>{
 
 const incOrders = async(req,res)=>{
     const {order,type} = req.body.data
-    const token = req.body.token
+    // const token = req.body.token
     try{
-        if(token === null){
-            res.send('Not Logged In')
-        }
-        else{
-            jwt.verify(token,process.env.SECKEY,async (err,details)=>{
-                if(err){
-                    console.log(err)
-                }
-                else{
-                    const Checkname = await OrderModel.findOne({name:details.name})
-                    // console.log(Checkname)
-                    if(Checkname === null){
-                        res.send('User does not present ')
-                    }
-                    else{
+    //     if(token === null){
+    //         res.send('Not Logged In')
+    //     }
+    //     else{
+            // jwt.verify(token,process.env.SECKEY,async (err,details)=>{
+            //     if(err){
+            //         console.log(err)
+            //     }
+            //     else{
+            //         const Checkname = await OrderModel.findOne({name:details.name})
+            //         // console.log(Checkname)
+            //         if(Checkname === null){
+            //             res.send('User does not present ')
+            //         }
+            //         else{
                         if(type == 'inc'){
                             const result = await OrderModel.findOneAndUpdate({name:details.name,"orders.name":order.name},{$inc:{"orders.$.qty":1}})
                             res.send(result)
@@ -110,10 +110,10 @@ const incOrders = async(req,res)=>{
                            }
                         }
                     }
-                }
-            })
-        }
-        }
+        //         }
+        //     })
+        // }
+        // }
     
     catch(err){
         console.log(err)
