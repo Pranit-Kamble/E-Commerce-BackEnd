@@ -30,9 +30,11 @@ const AddOrders = async(req,res) =>{
                         })
                         if(sum === 0){
                             const result  = await OrderModel.findOneAndUpdate({name:details.name},{$push:{orders:{...order,qty:1}}})
+                            res.send('Added to cart=>',result)
                         }
                         else{
                             const result = await OrderModel.findOneAndUpdate({name:details.name,"orders.name":order.name},{$inc:{"orders.$.qty":1}})
+                            res.send('Already exists incresed quantity=>',result)
                         }
                     }
                 }
