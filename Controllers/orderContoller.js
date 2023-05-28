@@ -141,5 +141,30 @@ const incOrders = async(req,res)=>{
     //     console.log(err)
     // }
 }
+const checkout =()=>{
+    const token = req.body.token
+    try{
+        if(token === null){
+            res.send('Not Logged In')
+        }
+        else{
+            jwt.verify(token,process.env.SECKEY,async (err,details)=>{
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    const Checkname = await OrderModel.findOneAndUpdate({name:details.name},{$set:{orders:[]}})
+                    // console.log(Checkname)
+                    res.send(Checkname)
+                }
+            })
+        }
+        }
+    
+    catch(err){
+        console.log(err)
+    }
 
-module.exports = {AddOrders,getOrders,incOrders}
+}
+
+module.exports = {AddOrders,getOrders,incOrders,checkout}
