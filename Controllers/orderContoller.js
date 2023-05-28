@@ -141,7 +141,7 @@ const incOrders = async(req,res)=>{
     //     console.log(err)
     // }
 }
-const checkout =()=>{
+const checkout =async(req,res)=>{
     const token = req.body.token
     try{
         if(token === null){
