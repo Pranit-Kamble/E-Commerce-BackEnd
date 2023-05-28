@@ -60,12 +60,12 @@ const getOrders = async(req,res) =>{
                 else{
                     const Checkname = await OrderModel.findOne({name:details.name})
                     // console.log(Checkname)
-                    // if(Checkname === null){
-                    //     res.send('User does not present ')
-                    // }
-                    // else{
-                        res.send(Checkname)
-                    // }
+                    if(Checkname === null){
+                        res.send('User does not present ')
+                    }
+                    else{
+                        res.send('item added')
+                    }
                 }
             })
         }
