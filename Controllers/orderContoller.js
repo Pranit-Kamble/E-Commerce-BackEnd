@@ -17,9 +17,9 @@ const AddOrders = async(req,res) =>{
                     // console.log(Checkname)
                     if(Checkname === null){
                         const result = await OrderModel.create({name:details.name,orders:[{...order,qty:1}]})
-                        result.save()
                         res.send(result)
                         // console.log(result)
+                        result.save()
                     }
                     else{
                         var sum = 0
@@ -64,7 +64,7 @@ const getOrders = async(req,res) =>{
                         res.send('User does not present ')
                     }
                     else{
-                        res.send('item added')
+                        res.send(Checkname)
                     }
                 }
             })
